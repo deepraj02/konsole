@@ -7,12 +7,12 @@ class Text extends KonsoleComponent {
 
   Text(
     this.content, {
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.bgColor,
     super.x,
     super.y,
   }) : super(width: content.length);
 
   @override
-  String render() => Ansi.color(content, fg: fgColor, bgColor: bgColor);
+  String render() => KonsoleAnsi.color(content, fg: fgColor, bgColor: bgColor);
 }

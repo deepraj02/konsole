@@ -11,7 +11,7 @@ class Konsole {
   void add(KonsoleComponent component) => components.add(component);
 
   void _render() {
-    stdout.write(Ansi.clear);
+    stdout.write(KonsoleAnsi.clear);
     for (var component in components) {
       var lines = component.render().split('\n');
       for (int i = 0; i < lines.length; i++) {
@@ -25,7 +25,7 @@ class Konsole {
   void run() {
     stdin.echoMode = false;
     stdin.lineMode = false;
-    stdout.write(Ansi.cursorHide);
+    stdout.write(KonsoleAnsi.cursorHide);
 
     _timer = Timer.periodic(Duration(milliseconds: 16), (timer) {
       for (var c in components) {
@@ -64,10 +64,10 @@ class Konsole {
 
   void _quit() {
     _timer.cancel();
-    stdout.write(Ansi.cursorShow);
+    stdout.write(KonsoleAnsi.cursorShow);
     stdin.echoMode = true;
     stdin.lineMode = true;
-    stdout.write(Ansi.clear);
+    stdout.write(KonsoleAnsi.clear);
     exit(0);
   }
 }

@@ -10,22 +10,25 @@ class Spinner extends KonsoleComponent {
 
   Spinner._({
     required this.frames,
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.speed = 5.0,
     super.x,
     super.y,
   }) : super(width: frames.map((f) => f.length).reduce(max));
 
-  factory Spinner({String fgColor = AnsiColors.white, int x = 0, int y = 0}) =>
-      Spinner._(
-        frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
-        fgColor: fgColor,
-        x: x,
-        y: y,
-      );
+  factory Spinner({
+    String fgColor = KonsoleColors.white,
+    int x = 0,
+    int y = 0,
+  }) => Spinner._(
+    frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
+    fgColor: fgColor,
+    x: x,
+    y: y,
+  );
 
   factory Spinner.dot({
-    String fgColor = AnsiColors.white,
+    String fgColor = KonsoleColors.white,
     int x = 0,
     int y = 0,
   }) => Spinner._(
@@ -37,13 +40,13 @@ class Spinner extends KonsoleComponent {
   );
 
   factory Spinner.line({
-    String fgColor = AnsiColors.white,
+    String fgColor = KonsoleColors.white,
     int x = 0,
     int y = 0,
   }) => Spinner._(frames: ['-', '\\', '|', '/'], fgColor: fgColor, x: x, y: y);
 
   factory Spinner.box({
-    String fgColor = AnsiColors.white,
+    String fgColor = KonsoleColors.white,
     int x = 0,
     int y = 0,
   }) => Spinner._(
@@ -61,5 +64,5 @@ class Spinner extends KonsoleComponent {
   }
 
   @override
-  String render() => Ansi.color(frames[_phase.floor()], fg: fgColor);
+  String render() => KonsoleAnsi.color(frames[_phase.floor()], fg: fgColor);
 }

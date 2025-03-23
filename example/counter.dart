@@ -8,7 +8,7 @@ class Counter extends KonsoleComponent {
 
   Counter({
     this.value = 0,
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.bgColor,
     this.totalWidth = 20,
     super.x,
@@ -24,7 +24,7 @@ class Counter extends KonsoleComponent {
         text.length > totalWidth
             ? text.substring(0, totalWidth)
             : text.padRight(totalWidth);
-    return Ansi.color(text, fg: fgColor, bgColor: bgColor);
+    return KonsoleAnsi.color(text, fg: fgColor, bgColor: bgColor);
   }
 
   @override

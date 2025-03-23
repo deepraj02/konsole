@@ -5,20 +5,20 @@ import 'counter.dart';
 void main() {
   final app = Konsole();
 
-  final counter = Counter(fgColor: AnsiColors.red, totalWidth: 35);
+  final counter = Counter(fgColor: KonsoleColors.red, totalWidth: 35);
 
   final counterBox = Column([
     counter,
     Column([
       Button(
         'Up',
-        fgColor: AnsiColors.magenta,
+        fgColor: KonsoleColors.magenta,
         onPressed: () => counter.value++,
         customWidth: 10,
       ),
       Button(
         'Down',
-        fgColor: AnsiColors.yellow,
+        fgColor: KonsoleColors.yellow,
         onPressed: () => counter.value--,
         customWidth: 10,
       ),
@@ -29,10 +29,10 @@ void main() {
     Row([
       counterBox,
       Column([
-        Spinner.line(fgColor: AnsiColors.cyan),
-        Spinner.dot(fgColor: AnsiColors.yellow),
-        Spinner.box(fgColor: AnsiColors.magenta),
-        Spinner(fgColor: AnsiColors.blue),
+        Spinner.line(fgColor: KonsoleColors.cyan),
+        Spinner.dot(fgColor: KonsoleColors.yellow),
+        Spinner.box(fgColor: KonsoleColors.magenta),
+        Spinner(fgColor: KonsoleColors.blue),
       ]),
     ]),
   );

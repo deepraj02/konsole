@@ -1,12 +1,12 @@
 import 'package:konsole/konsole.dart';
 
-class Ansi {
+class KonsoleAnsi {
   static const clear = '\x1B[2J\x1B[H';
   static const reset = '\x1B[0m';
 
   static String color(
     String text, {
-    String fg = AnsiColors.white,
+    String fg = KonsoleColors.white,
     String? bgColor,
   }) {
     String code = '';

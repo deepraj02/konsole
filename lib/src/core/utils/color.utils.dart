@@ -1,4 +1,4 @@
-class AnsiColors {
+class KonsoleColors {
   static const String reset = '\x1B[0m';
   static const String black = '\x1B[30m';
   static const String red = '\x1B[31m';

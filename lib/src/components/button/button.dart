@@ -9,7 +9,7 @@ class Button extends KonsoleComponent {
 
   Button(
     this.label, {
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.bgColor,
     this.onPressed,
     this.customWidth,
@@ -28,8 +28,8 @@ class Button extends KonsoleComponent {
               ? text.substring(0, customWidth!)
               : text.padRight(customWidth!);
     }
-    String? effectiveBg = (focused ? AnsiColors.bgBlue : bgColor) as String?;
-    return Ansi.color(text, fg: fgColor, bgColor: effectiveBg);
+    String? effectiveBg = (focused ? KonsoleColors.bgBlue : bgColor) as String?;
+    return KonsoleAnsi.color(text, fg: fgColor, bgColor: effectiveBg);
   }
 
   @override

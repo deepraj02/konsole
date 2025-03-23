@@ -68,7 +68,7 @@ import 'package:konsole/konsole.dart';
 void main() {
   final app = Konsole();
   
-  app.add(Text("Hello Konsole!", fgColor: AnsiColors.green));
+  app.add(Text("Hello Konsole!", fgColor: KonsoleColors.green));
   
   app.run();
 }
@@ -82,7 +82,7 @@ import 'package:konsole/konsole.dart';
 void main() {
   final app = Konsole();
 
-  final counter = Counter(fgColor: AnsiColors.red);
+  final counter = Counter(fgColor: KonsoleColors.red);
   
   app.add(Box(
     Column([
@@ -112,7 +112,7 @@ class Counter extends KonsoleComponent {
 
   Counter({
     this.value = 0,
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.bgColor,
     this.totalWidth = 20,
     super.x,
@@ -145,20 +145,20 @@ class Counter extends KonsoleComponent {
 void main() {
   final app = Konsole();
 
-  final counter = Counter(fgColor: AnsiColors.red, totalWidth: 35);
+  final counter = Counter(fgColor: KonsoleColors.red, totalWidth: 35);
 
   final counterBox = Column([
     counter,
     Column([
       Button(
         'Up',
-        fgColor: AnsiColors.magenta,
+        fgColor: KonsoleColors.magenta,
         onPressed: () => counter.value++,
         customWidth: 10,
       ),
       Button(
         'Down',
-        fgColor: AnsiColors.yellow,
+        fgColor: KonsoleColors.yellow,
         onPressed: () => counter.value--,
         customWidth: 10,
       ),
@@ -169,10 +169,10 @@ void main() {
     Row([
       counterBox,
       Column([
-        Spinner.line(fgColor: AnsiColors.cyan),
-        Spinner.dot(fgColor: AnsiColors.yellow),
-        Spinner.box(fgColor: AnsiColors.magenta),
-        Spinner(fgColor: AnsiColors.blue),
+        Spinner.line(fgColor: KonsoleColors.cyan),
+        Spinner.dot(fgColor: KonsoleColors.yellow),
+        Spinner.box(fgColor: KonsoleColors.magenta),
+        Spinner(fgColor: KonsoleColors.blue),
       ]),
     ]),
   );
@@ -190,8 +190,8 @@ Display styled text with color support:
 ```dart
 Text(
   "Hello World",
-  fgColor: AnsiColors.green,
-  bgColor: AnsiColors.bgBlack,
+  fgColor: KonsoleColors.green,
+  bgColor: KonsoleColors.bgBlack,
 )
 ```
 
@@ -202,8 +202,8 @@ Interactive button that can respond to user input:
 ```dart
 Button(
   "Click Me",
-  fgColor: AnsiColors.white,
-  bgColor: AnsiColors.bgBlue,
+  fgColor: KonsoleColors.white,
+  bgColor: KonsoleColors.bgBlue,
   onPressed: () => print("Button clicked!"),
 )
 ```
@@ -216,7 +216,7 @@ Container with border and optional title:
 Box(
   Text("Content inside box"),
   title: "Box Title",
-  fgColor: AnsiColors.cyan,
+  fgColor: KonsoleColors.cyan,
 )
 ```
 
@@ -226,16 +226,16 @@ Animated loading indicators with multiple styles:
 
 ```dart
 // Default spinner '⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'
-Spinner(fgColor: AnsiColors.blue)
+Spinner(fgColor: KonsoleColors.blue)
 
 // Dot-style spinner '.', '..', '...', '....'
-Spinner.dot(fgColor: AnsiColors.yellow)
+Spinner.dot(fgColor: KonsoleColors.yellow)
 
 // Line-style spinner
-Spinner.line(fgColor: AnsiColors.cyan)
+Spinner.line(fgColor: KonsoleColors.cyan)
 
 // Box-style spinner  '□', '■', '▣', '▢'
-Spinner.box(fgColor: AnsiColors.magenta)
+Spinner.box(fgColor: KonsoleColors.magenta)
 ```
 
 ### Counter
@@ -245,7 +245,7 @@ Interactive numeric counter:
 ```dart
 Counter(
   value: 10,
-  fgColor: AnsiColors.red,
+  fgColor: KonsoleColors.red,
   totalWidth: 20, 
 )
 ```
@@ -263,24 +263,24 @@ Konsole provides built-in ANSI color constants:
 
 ```dart
 // Foreground colors
-AnsiColors.black
-AnsiColors.red
-AnsiColors.green
-AnsiColors.yellow
-AnsiColors.blue
-AnsiColors.magenta
-AnsiColors.cyan
-AnsiColors.white
+KonsoleColors.black
+KonsoleColors.red
+KonsoleColors.green
+KonsoleColors.yellow
+KonsoleColors.blue
+KonsoleColors.magenta
+KonsoleColors.cyan
+KonsoleColors.white
 
 // Background colors
-AnsiColors.bgBlack
-AnsiColors.bgRed
-AnsiColors.bgGreen
-AnsiColors.bgYellow
-AnsiColors.bgBlue
-AnsiColors.bgMagenta
-AnsiColors.bgCyan
-AnsiColors.bgWhite
+KonsoleColors.bgBlack
+KonsoleColors.bgRed
+KonsoleColors.bgGreen
+KonsoleColors.bgYellow
+KonsoleColors.bgBlue
+KonsoleColors.bgMagenta
+KonsoleColors.bgCyan
+KonsoleColors.bgWhite
 ```
 
 ## Creating Custom Components

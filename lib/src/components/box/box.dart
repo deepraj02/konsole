@@ -9,7 +9,7 @@ class Box extends KonsoleComponent {
   Box(
     this.child, {
     this.title,
-    this.fgColor = AnsiColors.white,
+    this.fgColor = KonsoleColors.white,
     this.bgColor,
     super.x,
     super.y,
@@ -32,7 +32,7 @@ class Box extends KonsoleComponent {
       middleLines.add('│${line.padRight(width - 2)}│');
     }
     String bottom = '└${'─' * (width - 2)}┘';
-    return Ansi.color(
+    return KonsoleAnsi.color(
       [top, ...middleLines, bottom].join('\n'),
       fg: fgColor,
       bgColor: bgColor,
