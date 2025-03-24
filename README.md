@@ -3,8 +3,33 @@
 A modern, feature-rich terminal UI framework for Dart. Build interactive command-line interfaces with ease using a component-based architecture.
 
 Konsole provides a simple yet powerful way to create terminal applications with rich UI components like boxes, buttons, spinners, and more.
+## Example
 
+## Example
 
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="assets/konsole_1.gif" alt="Konsole Demo 1" width="500"/>
+        <br />
+        <em>Basic Components Demo</em>
+      </td>
+      <td align="center">
+        <img src="assets/konsole_3.gif" alt="Konsole Demo 2" width="500"/>
+        <br />
+        <em>Interactive Components</em>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <img src="assets/konsole_2.gif" alt="Konsole Demo 3" width="1000"/>
+        <br />
+        <em>TUI Counter App with Konsole</em>
+      </td>
+    </tr>
+  </table>
+</div>
 ## Features
 
 - 🎨 **Rich component library** - Buttons, boxes, spinners, text labels, and more
