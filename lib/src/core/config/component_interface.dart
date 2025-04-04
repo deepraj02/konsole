@@ -1,12 +1,17 @@
 abstract class KonsoleComponent {
-  int x = 0;
-  int y = 0;
+  int marginHorizontal = 0;
+  int marginVertical = 0;
   int width;
   int height;
   bool focusable = false;
   bool focused = false;
 
-  KonsoleComponent({this.x = 0, this.y = 0, this.width = 10, this.height = 1});
+  KonsoleComponent({
+    this.marginHorizontal = 0,
+    this.marginVertical = 0,
+    this.width = 10,
+    this.height = 1,
+  });
 
   String render();
   void update(double dt) {}

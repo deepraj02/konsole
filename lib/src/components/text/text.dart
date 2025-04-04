@@ -3,14 +3,14 @@ import 'package:konsole/konsole.dart';
 class Text extends KonsoleComponent {
   String content;
   String fgColor;
-  String? bgColor; // Optional background, defaults to transparent
+  String? bgColor;
 
   Text(
     this.content, {
     this.fgColor = KonsoleColors.white,
     this.bgColor,
-    super.x,
-    super.y,
+    super.marginHorizontal,
+    super.marginVertical,
   }) : super(width: content.length);
 
   @override

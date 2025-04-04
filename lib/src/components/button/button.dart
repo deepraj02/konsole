@@ -1,40 +1,44 @@
 import 'package:konsole/konsole.dart';
 
 class Button extends KonsoleComponent {
-  String label;
-  String fgColor;
-  int? bgColor;
-  Function()? onPressed;
-  int? customWidth;
+  final String label;
+  final String fgColor;
+  final String? bgColor;
+  final Function? onPressed;
+  final int customWidth;
 
   Button(
     this.label, {
     this.fgColor = KonsoleColors.white,
     this.bgColor,
     this.onPressed,
-    this.customWidth,
-    super.x,
-    super.y,
-  }) : super(width: customWidth ?? (label.length + 4), height: 1) {
+    this.customWidth = 10,
+    super.marginHorizontal,
+    super.marginVertical,
+  }) : super(width: customWidth, height: 1) {
     focusable = true;
   }
 
   @override
   String render() {
-    String text = focused ? '[$label]' : ' $label ';
-    if (customWidth != null) {
+    String text = label;
+    if (focused) {
+      int contentWidth = customWidth - 2;
       text =
-          text.length > customWidth!
-              ? text.substring(0, customWidth!)
-              : text.padRight(customWidth!);
+          text.length > contentWidth ? text.substring(0, contentWidth) : text;
+      text = "[$text]".padRight(customWidth);
+    } else {
+      text =
+          text.length > customWidth
+              ? text.substring(0, customWidth)
+              : text.padRight(customWidth);
     }
-    String? effectiveBg = (focused ? KonsoleColors.bgBlue : bgColor) as String?;
-    return KonsoleAnsi.color(text, fg: fgColor, bgColor: effectiveBg);
+    return KonsoleAnsi.color(text, fg: fgColor, bgColor: bgColor);
   }
 
   @override
   void handleInput(String input) {
-    if (input == '\r' && focused && onPressed != null) {
+    if ((input == '\r' || input == '\n') && focused && onPressed != null) {
       onPressed!();
     }
   }

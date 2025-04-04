@@ -12,19 +12,19 @@ class Spinner extends KonsoleComponent {
     required this.frames,
     this.fgColor = KonsoleColors.white,
     this.speed = 5.0,
-    super.x,
-    super.y,
+    super.marginHorizontal,
+    super.marginVertical,
   }) : super(width: frames.map((f) => f.length).reduce(max));
 
   factory Spinner({
     String fgColor = KonsoleColors.white,
-    int x = 0,
-    int y = 0,
+    int marginHorizontal = 0,
+    int marginVertical = 0,
   }) => Spinner._(
     frames: ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏'],
     fgColor: fgColor,
-    x: x,
-    y: y,
+    marginHorizontal: marginHorizontal,
+    marginVertical: marginVertical,
   );
 
   factory Spinner.dot({
@@ -35,15 +35,20 @@ class Spinner extends KonsoleComponent {
     frames: ['.', '..', '...', '....'],
     fgColor: fgColor,
     speed: 2.0,
-    x: x,
-    y: y,
+    marginHorizontal: x,
+    marginVertical: y,
   );
 
   factory Spinner.line({
     String fgColor = KonsoleColors.white,
     int x = 0,
     int y = 0,
-  }) => Spinner._(frames: ['-', '\\', '|', '/'], fgColor: fgColor, x: x, y: y);
+  }) => Spinner._(
+    frames: ['-', '\\', '|', '/'],
+    fgColor: fgColor,
+    marginHorizontal: x,
+    marginVertical: y,
+  );
 
   factory Spinner.box({
     String fgColor = KonsoleColors.white,
@@ -53,8 +58,8 @@ class Spinner extends KonsoleComponent {
     frames: ['□', '■', '▣', '▢'],
     fgColor: fgColor,
     speed: 3.0,
-    x: x,
-    y: y,
+    marginHorizontal: x,
+    marginVertical: y,
   );
 
   @override

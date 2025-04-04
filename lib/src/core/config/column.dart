@@ -5,11 +5,12 @@ import 'package:konsole/src/core/config/component_interface.dart';
 class Column extends KonsoleComponent {
   List<KonsoleComponent> children;
 
-  Column(this.children, {super.x, super.y}) : super(width: 0, height: 0) {
+  Column(this.children, {super.marginHorizontal, super.marginVertical})
+    : super(width: 0, height: 0) {
     int totalHeight = 0;
     int maxWidth = 0;
     for (var child in children) {
-      child.y = y + totalHeight;
+      child.marginVertical = marginVertical + totalHeight;
       totalHeight += child.height;
       maxWidth = max(maxWidth, child.width);
     }
