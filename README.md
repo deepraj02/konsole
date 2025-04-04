@@ -140,8 +140,8 @@ class Counter extends KonsoleComponent {
     this.fgColor = KonsoleColors.white,
     this.bgColor,
     this.totalWidth = 20,
-    super.x,
-    super.y,
+    super.marginHorizontal,
+    super.marginVertical,
   }) : super(width: totalWidth, height: 1) {
     focusable = true;
   }
@@ -314,7 +314,7 @@ Extend the `KonsoleComponent` class to create your own components:
 
 ```dart
 class MyCustomComponent extends KonsoleComponent {
-  MyCustomComponent({super.x, super.y}) : super(width: 10, height: 1);
+  MyCustomComponent({super.marginHorizontal, super.marginVertical}) : super(width: 10, height: 1);
 
   @override
   String render() {
@@ -331,6 +331,29 @@ class MyCustomComponent extends KonsoleComponent {
     // Update state here
   }
 }
+```
+
+## Layout System
+
+Konsole uses a simple but powerful layout system with two main layout components:
+
+1. **Row**: Horizontal layout that arranges components from left to right
+2. **Column**: Vertical layout that arranges components from top to bottom
+
+Both layout components support margins:
+
+```dart
+// Horizontal layout with margin
+Row([component1, component2], marginHorizontal: 2, marginVertical: 1)
+
+// Vertical layout with margin
+Column([component1, component2], marginHorizontal: 2, marginVertical: 1)
+```
+
+Each component can also have its own margins:
+
+```dart
+Text("Hello", marginHorizontal: 2, marginVertical: 1)
 ```
 
 ## License
