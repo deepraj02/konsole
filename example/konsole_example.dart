@@ -7,35 +7,49 @@ void main() {
 
   final counter = Counter(fgColor: KonsoleColors.red, totalWidth: 35);
 
-  final counterBox = Column([
-    counter,
-    Column([
-      Button(
-        'Up',
-        fgColor: KonsoleColors.magenta,
-        onPressed: () => counter.value++,
-        customWidth: 10,
-      ),
-      Button(
-        'Down',
-        fgColor: KonsoleColors.yellow,
-        onPressed: () => counter.value--,
-        customWidth: 10,
-      ),
+  final counterBox = Box.styled(
+    style: BoxType.round,
+    child: Column([
+      Row([counter]),
     ]),
-  ]);
+    boxColor: BoxColor.named(KonsoleColors.cyan),
+    title: "Counter",
+    titlePosition: TitlePosition.top,
+    titleColor: BoxColor.named(KonsoleColors.yellow),
+    py: 1,
+    contentAlign: ContentAlignment.center,
+    hintText: "q(Quit)",
+  );
 
-  app.add(
-    Row([
-      counterBox,
-      Column([
+  final componentsShowcase = Box.styled(
+    style: BoxType.bold,
+    child: Column([
+      Text("Component Showcase", fgColor: KonsoleColors.white),
+      Row([
         Spinner.line(fgColor: KonsoleColors.cyan),
         Spinner.dot(fgColor: KonsoleColors.yellow),
         Spinner.box(fgColor: KonsoleColors.magenta),
         Spinner(fgColor: KonsoleColors.blue),
-      ]),
+      ], marginVertical: 1),
+      Row([
+        Button('Click me', fgColor: KonsoleColors.green, customWidth: 20),
+        Button('Navigate', fgColor: KonsoleColors.cyan, customWidth: 20),
+      ], marginVertical: 1),
+      Text(
+        "Use Tab to navigate between components",
+        fgColor: KonsoleColors.yellow,
+      ),
     ]),
+    boxColor: BoxColor.named(KonsoleColors.cyan),
+    title: "Components",
+    titlePosition: TitlePosition.top,
+    titleColor: BoxColor.named(KonsoleColors.yellow),
+    py: 2,
+    marginVertical: 10,
   );
+
+  app.add(counterBox);
+  app.add(componentsShowcase);
 
   app.run();
 }
