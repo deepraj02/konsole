@@ -19,15 +19,16 @@ class Konsole {
     for (var component in components) {
       var lines = component.render().split('\n');
       for (int i = 0; i < lines.length; i++) {
-        stdout.write('\x1B[${component.y + i + 1};${component.x + 1}H');
-        stdout.write(lines[i].padRight(component.width, ' '));
+        stdout.write(
+          '\x1B[${component.marginVertical + i + 1};${component.marginHorizontal + 1}H',
+        );
+
+        stdout.write(lines[i]);
       }
     }
   }
 
-  void forceRedraw() {
-    _needsFullRedraw = true;
-  }
+  void forceRedraw() => _needsFullRedraw = true;
 
   void run() {
     stdin.echoMode = false;
@@ -35,18 +36,16 @@ class Konsole {
     stdout.write(KonsoleAnsi.cursorHide);
 
     _timer = Timer.periodic(Duration(milliseconds: 16), (timer) {
-      bool needsUpdate = false;
       for (var c in components) {
         c.update(0.016);
-        if (c is Spinner || c.focused) needsUpdate = true;
       }
-      if (needsUpdate) _render();
+      _render();
     });
 
     stdin.listen((data) {
       String input = String.fromCharCodes(data);
       if (input.startsWith('\x1B[M')) return;
-      if (input == 'q') _quit();
+      if (input == 'q') quit();
       if (input == '\t') _focusNext();
       for (var c in components) {
         c.handleInput(input);
@@ -72,7 +71,7 @@ class Konsole {
     }
   }
 
-  void _quit() {
+  void quit() {
     _timer.cancel();
     stdout.write(KonsoleAnsi.cursorShow);
     stdin.echoMode = true;
