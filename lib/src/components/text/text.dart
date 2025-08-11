@@ -448,5 +448,4 @@ extension TextStyleExtensions on Text {
     marginHorizontal: marginHorizontal,
     marginVertical: marginVertical,
   );
-  // End of file
 }
