@@ -85,6 +85,7 @@ More to come.
 
 ## Usage
 
+
 ### Simple Example
 
 ```dart
@@ -92,37 +93,55 @@ import 'package:konsole/konsole.dart';
 
 void main() {
   final app = Konsole();
-  
-  app.add(Text("Hello Konsole!", fgColor: KonsoleColors.green));
-  
+  app.add(Text.success("Hello Konsole!"));
+  app.run();
+}
+```
+
+### Text Styles Example
+
+See `example/components/texts.dart` for a full showcase of all text styles and extension methods:
+
+```dart
+import 'package:konsole/konsole.dart';
+
+void main() {
+  final examples = [
+    Text('Default Text'),
+    Text.success('Success Text'),
+    Text.error('Error Text'),
+    Text.warning('Warning Text'),
+    Text.info('Info Text'),
+    Text.muted('Muted Text'),
+    Text.highlight('Highlight Text'),
+    Text.title('Title Text'),
+    Text.subtitle('Subtitle Text'),
+    Text.accent('Accent Text'),
+    Text('Bold Text').bold(),
+    Text('Italic Text').italic(),
+    Text('Underline Text').underline(),
+    Text('Custom Color').withColor(KonsoleColors.magenta),
+    Text('Custom BG').withBackgroundColor(KonsoleColors.bgCyan),
+    Text('Right Aligned', alignment: TextAlignment.right, maxWidth: 30),
+    Text('Center Aligned', alignment: TextAlignment.center, maxWidth: 30),
+    Text(
+      'Wrapped text example that is long enough to demonstrate word wrapping.',
+      maxWidth: 20,
+      wordWrap: true,
+    ),
+    Text('With Prefix', prefix: '>> '),
+    Text('With Suffix', suffix: ' <<'),
+  ];
+
+  final app = Konsole();
+  app.add(Column(examples));
   app.run();
 }
 ```
 
 ### Interactive Counter Example
 
-```dart
-import 'package:konsole/konsole.dart';
-
-void main() {
-  final app = Konsole();
-
-  final counter = Counter(fgColor: KonsoleColors.red);
-  
-  app.add(Box(
-    Column([
-      counter,
-      Row([
-        Button("Increment", onPressed: () => counter.value++),
-        Button("Decrement", onPressed: () => counter.value--),
-      ]),
-    ]),
-    title: "Counter Demo",
-  ));
-  
-  app.run();
-}
-```
+See `example/apps/konsole_example.dart` for a full-featured interactive demo with counter, spinners, and more.
 
 ### Complex Layout Example
 
@@ -210,14 +229,30 @@ void main() {
 
 ### Text
 
-Display styled text with color support:
+Display styled text with color and formatting support:
 
 ```dart
-Text(
-  "Hello World",
-  fgColor: KonsoleColors.green,
-  bgColor: KonsoleColors.bgBlack,
-)
+Text.success("Success!");
+Text.error("Error!");
+Text.warning("Warning!");
+Text.info("Info");
+Text.muted("Muted");
+Text.highlight("Highlight");
+Text.title("Title");
+Text.subtitle("Subtitle");
+Text.accent("Accent");
+
+// Use extension methods for chaining styles
+Text("Bold").bold();
+Text("Italic").italic();
+Text("Underline").underline();
+Text("Custom Color").withColor(KonsoleColors.magenta);
+Text("Custom BG").withBackgroundColor(KonsoleColors.bgCyan);
+Text("Right Aligned", alignment: TextAlignment.right, maxWidth: 30);
+Text("Center Aligned", alignment: TextAlignment.center, maxWidth: 30);
+Text("Wrapped text example that is long enough to demonstrate word wrapping.", maxWidth: 20, wordWrap: true);
+Text("With Prefix", prefix: '>> ');
+Text("With Suffix", suffix: ' <<');
 ```
 
 ### Button
@@ -267,13 +302,7 @@ Spinner.box(fgColor: KonsoleColors.magenta)
 
 Interactive numeric counter:
 
-```dart
-Counter(
-  value: 10,
-  fgColor: KonsoleColors.red,
-  totalWidth: 20, 
-)
-```
+See `example/apps/counter.dart` for a full implementation.
 
 ## Key Navigation
 

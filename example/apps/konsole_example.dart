@@ -24,7 +24,7 @@ void main() {
   final componentsShowcase = Box.styled(
     style: BoxType.bold,
     child: Column([
-      Text("Component Showcase", fgColor: KonsoleColors.white),
+      Text.highlight("Component Showcase", ),
       Row([
         Spinner.line(fgColor: KonsoleColors.cyan),
         Spinner.dot(fgColor: KonsoleColors.yellow),
@@ -37,7 +37,7 @@ void main() {
       ], marginVertical: 1),
       Text(
         "Use Tab to navigate between components",
-        fgColor: KonsoleColors.yellow,
+
       ),
     ]),
     boxColor: BoxColor.named(KonsoleColors.cyan),
