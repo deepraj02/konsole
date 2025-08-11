@@ -1,0 +1,38 @@
+name: Publish Konsole to pub.dev
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  publishing-package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Analyze code
+        run: flutter analyze
+
+      - name: Format code
+        run: dart format --fix .
+
+      - name: Check publish warnings
+        run: dart pub publish --dry-run
+
+      - name: Publish package
+        uses: k-paxian/dart-package-publisher@v1.5.1
+        with:
+          accessToken: ${{ secrets.ACCESS_TOKEN }}
+          refreshToken: ${{ secrets.REFRESH_TOKEN }}
+          credentialJson: ${{ secrets.CREDENTIAL_SECRET }} 
+          flutter: true
+          skipTests: true
